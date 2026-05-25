@@ -1,0 +1,21 @@
+crop,soil,season,temperature,humidity,rainfall,result
+Rice,Black Soil,June to October,30,80,220,Best Profit
+Rice,Alluvial Soil,June to October,31,82,240,Best Profit
+Wheat,Loamy Soil,October to March,22,45,40,Best Profit
+Wheat,Sandy Soil,October to March,30,25,15,Loss Risk
+Cotton,Black Soil,June to October,35,60,120,Average Profit
+Groundnut,Sandy Soil,March to June,40,25,20,Loss Risk
+Sugarcane,Alluvial Soil,June to October,32,85,250,Best Profit
+Tomato,Loamy Soil,March to June,28,55,60,Average Profit
+Onion,Red Soil,October to March,20,40,30,Average Profit
+Soybean,Black Soil,June to October,31,75,180,Best Profit
+Barley,Sandy Soil,October to March,24,35,25,Loss Risk
+Potato,Clay Soil,October to March,18,70,90,Best Profit
+Maize,Red Soil,June to October,29,65,150,Average Profit
+Millets,Sandy Soil,March to June,38,28,18,Loss Risk
+Cotton,Black Soil,June to October,34,62,130,Best Profit
+Rice,Clay Soil,June to October,30,85,260,Best Profit
+Tomato,Red Soil,March to June,27,52,55,Average Profit
+Wheat,Loamy Soil,October to March,21,48,42,Best Profit
+Groundnut,Sandy Soil,March to June,39,30,22,Loss Risk
+Sugarcane,Alluvial Soil,June to October,33,88,270,Best Profit

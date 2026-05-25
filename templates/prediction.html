@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <h2>Smart Crop Prediction</h2>
+
+        <!-- Crop -->
+
+        <select name="crop" required>
+
+    <option value="">
+        Select Crop
+    </option>
+
+    <option>Rice</option>
+
+    <option>Wheat</option>
+
+    <option>Maize</option>
+
+    <option>Sugarcane</option>
+
+    <option>Cotton</option>
+
+    <option>Potato</option>
+
+    <option>Tomato</option>
+
+    <option>Onion</option>
+
+    <option>Groundnut</option>
+
+    <option>Soybean</option>
+
+    <option>Barley</option>
+
+    <option>Millets</option>
+
+</select>
+
+        <!-- Soil -->
+
+        <select name="soil" required>
+
+            <option value="">
+                Select Soil Type
+            </option>
+
+            <option>Black Soil</option>
+
+            <option>Red Soil</option>
+
+            <option>Alluvial Soil</option>
+
+            <option>Sandy Soil</option>
+
+            <option>Clay Soil</option>
+
+            <option>Loamy Soil</option>
+
+        </select>
+
+        <!-- Season -->
+
+        <select name="season" required>
+
+            <option value="">
+                Select Season
+            </option>
+
+            <option>June to October</option>
+
+            <option>October to March</option>
+
+            <option>March to June</option>
+
+        </select>
+
+        <!-- Land -->
+
+        <input type="number"
+        name="land"
+        placeholder="Enter Land Area (Acres)"
+        required>
+
+        <button type="submit">
+
+            Start Prediction
+
+        </button>
+
+    </form>
+
+</div>
+
+{% if result %}
+
+<div class="prediction-result">
+
+    <h2>ML Prediction Result</h2>
+
+    <hr>
+
+    <p>
+
+        <strong>Temperature:</strong>
+
+        {{ result.temperature }} °C
+
+    </p>
+
+    <p>
+
+        <strong>Humidity:</strong>
+
+        {{ result.humidity }} %
+
+    </p>
+
+    <p>
+
+        <strong>Rainfall:</strong>
+
+        {{ result.rainfall }} mm
+
+    </p>
+
+    <p>
+
+        <strong>Irrigation Advice:</strong>
+
+        {{ result.irrigation }}
+
+    </p>
+
+    <p>
+
+        <strong>Profit Prediction:</strong>
+
+        {{ result.prediction }}
+
+    </p>
+
+</div>
+
+{% endif %}
+{% endblock %}

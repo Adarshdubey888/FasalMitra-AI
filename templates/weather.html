@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="weather-container">
+
+    <form method="POST" class="weather-form">
+
+        {% csrf_token %}
+
+        <h2>Weather Analysis</h2>
+
+        <input type="text"
+        name="city"
+        placeholder="Enter City Name"
+        required>
+
+        <button type="submit">
+            Check Weather
+        </button>
+
+    </form>
+
+    {% if weather_data %}
+
+    <div class="weather-card">
+
+        <h3>{{ weather_data.city }}</h3>
+
+        <p>🌡 Temperature: {{ weather_data.temperature }} °C</p>
+
+        <p>💧 Humidity: {{ weather_data.humidity }}%</p>
+
+        <p>🌬 Wind Speed: {{ weather_data.wind_speed }} m/s</p>
+
+        <p>☁ Weather: {{ weather_data.description }}</p>
+
+    </div>
+
+    {% endif %}
+
+    {% if error %}
+
+    <div style="color:red; margin-top:20px">
+
+        <h4>{{ error }}</h4>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

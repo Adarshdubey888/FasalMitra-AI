@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <h2>Smart Irrigation Advice</h2>
+
+        <!-- Crop -->
+
+        <select name="crop" required>
+
+            <option value="">
+                Select Crop
+            </option>
+
+            <option>Rice</option>
+
+            <option>Wheat</option>
+
+            <option>Maize</option>
+
+            <option>Sugarcane</option>
+
+            <option>Cotton</option>
+
+            <option>Potato</option>
+
+            <option>Tomato</option>
+
+            <option>Onion</option>
+
+            <option>Groundnut</option>
+
+            <option>Soybean</option>
+
+        </select>
+
+        <!-- Season -->
+
+        <select name="season" required>
+
+            <option value="">
+                Select Season
+            </option>
+
+            <option>June to October</option>
+
+            <option>October to March</option>
+
+            <option>March to June</option>
+
+        </select>
+
+        <button type="submit">
+
+            Check Irrigation Advice
+
+        </button>
+
+    </form>
+
+</div>
+
+
+{% if result %}
+
+<div class="prediction-result">
+
+    <h2>Irrigation Report</h2>
+
+    <hr>
+
+    <p>
+
+        <strong>Crop:</strong>
+
+        {{ result.crop }}
+
+    </p>
+
+    <p>
+
+        <strong>Temperature:</strong>
+
+        {{ result.temperature }} °C
+
+    </p>
+
+    <p>
+
+        <strong>Humidity:</strong>
+
+        {{ result.humidity }} %
+
+    </p>
+
+    <p>
+
+        <strong>Rainfall:</strong>
+
+        {{ result.rainfall }} mm
+
+    </p>
+
+    <p>
+
+        <strong>Advice:</strong>
+
+        {{ result.irrigation_days }}
+
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <h2>Manual Soil Selection</h2>
+
+        <select name="soil" required>
+
+            <option value="">
+                Select Soil Type
+            </option>
+
+            <option>Black Soil</option>
+
+            <option>Red Soil</option>
+
+            <option>Alluvial Soil</option>
+
+            <option>Sandy Soil</option>
+
+            <option>Clay Soil</option>
+
+            <option>Loamy Soil</option>
+
+        </select>
+
+        <button type="submit">
+
+            Get Recommendation
+
+        </button>
+
+    </form>
+
+</div>
+
+{% if recommendation %}
+
+<div class="recommendation-card">
+
+    <h2>
+
+        Recommendation For
+        {{ selected_soil }}
+
+    </h2>
+
+    <hr>
+
+    <p>
+
+        <strong>Suitable Crops:</strong>
+
+        {{ recommendation.crops }}
+
+    </p>
+
+    <p>
+
+        <strong>Fertilizer Advice:</strong>
+
+        {{ recommendation.fertilizer }}
+
+    </p>
+
+    <p>
+
+        <strong>Irrigation Advice:</strong>
+
+        {{ recommendation.irrigation }}
+
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

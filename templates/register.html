@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        .div {
+            border:2px solid black;
+            height: 350px;
+            width: 300px;
+            border-radius:20px;
+            
+            background-color: orange ;
+            background-radius:100px;
+        }
+    </style>
+</head>
+
+
+<div class="form-container " style=" padding-left:40%" >
+
+    <form method="POST">
+
+        {% csrf_token %}
+    <div class="div"  style=" padding-left:10px">
+
+        <h2 >Farmer Registration</h2>
+        
+        <input type="text"
+        name="name"
+        placeholder="Enter Name" 
+        required><br><br>
+
+        <input type="text"
+        name="phone"
+        placeholder="Enter Phone Number"
+        required><br><br>
+
+        <input type="text"
+        name="village"
+        placeholder="Enter Village"
+        required><br><br>
+
+        <input type="text"
+        name="state"
+        placeholder="Enter State"
+        required><br><br>
+
+        <button type="submit" >
+            Send OTP
+        </button><br><br><br>
+    </div>
+
+    </form>
+
+</div>
+{% endblock %}

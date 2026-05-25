@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <h2>Farmer Login</h2>
+
+        <input type="text"
+        name="phone"
+        placeholder="Enter Phone Number"
+        required>
+
+        <button type="submit">
+            Send OTP
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

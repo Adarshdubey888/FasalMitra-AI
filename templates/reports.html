@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Previous Reports</h2>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+
+        <th>Crop</th>
+
+        <th>Soil</th>
+
+        <th>Season</th>
+
+        <th>Prediction</th>
+
+        <th>Irrigation</th>
+
+        <th>Date</th>
+
+    </tr>
+
+    {% for report in reports %}
+
+    <tr>
+
+        <td>{{ report.crop }}</td>
+
+        <td>{{ report.soil }}</td>
+
+        <td>{{ report.season }}</td>
+
+        <td>{{ report.prediction }}</td>
+
+        <td>{{ report.irrigation }}</td>
+
+        <td>{{ report.created_at }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

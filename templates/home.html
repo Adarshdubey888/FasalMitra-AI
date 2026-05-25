@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <!-- Logo -->
+
+        <div class="hero-image">
+
+            <img src="{% static 'images/logo.png' %}" alt="FasalMitra Logo">
+
+        </div>
+
+        <!-- Text -->
+
+        <div class="hero-text">
+
+            <h1>Welcome to FasalMitra AI</h1>
+
+            <p>
+                Smart Agriculture Platform for Farmers
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cards">
+
+    <a href="{% url 'prediction' %}" class="card">
+        <h3>Start Prediction</h3>
+    </a>
+
+    
+
+    <a href="{% url 'weather' %}" class="card">
+        <h3>Weather Analysis</h3>
+    </a>
+
+    <a href="{% url 'irrigation' %}" class="card">
+        <h3>Irrigation Advice</h3>
+    </a>
+
+    <a href="{% url 'reports' %}" class="card">
+        <h3>Previous Reports</h3>
+    </a>
+
+</section>
+
+{% endblock %}
