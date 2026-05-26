@@ -70,19 +70,15 @@ def register(request):
 
         request.session['otp'] = str(otp)
 
-        request.session['demo_otp'] = otp
-
-        return render(request, 'verify_otp.html', {
-
-            'demo_otp': otp
-        })
+        return redirect('/verify-otp/')
 
     return render(request, 'register.html')
-
 
 # OTP Verification
 
 def verify_otp(request):
+
+    demo_otp = request.session.get('otp')
 
     if request.method == "POST":
 
@@ -108,8 +104,10 @@ def verify_otp(request):
 
             return redirect('/login/')
 
-    return render(request, 'verify_otp.html')
+    return render(request, 'verify_otp.html', {
 
+        'demo_otp': demo_otp
+    })
 
 # Login
 
@@ -129,9 +127,13 @@ def login_user(request):
 
             request.session['login_otp'] = str(otp)
 
-            return render(request, 'login_otp.html', {
+            return redirect('/login-otp/')
 
-                'demo_otp': otp
+        else:
+
+            return render(request, 'login.html', {
+
+                'error': 'Phone number not registered'
             })
 
     return render(request, 'login.html')
@@ -140,6 +142,8 @@ def login_user(request):
 # Verify Login OTP
 
 def login_otp(request):
+
+    demo_otp = request.session.get('login_otp')
 
     if request.method == "POST":
 
@@ -153,8 +157,10 @@ def login_otp(request):
 
             return redirect('/')
 
-    return render(request, 'login_otp.html')
+    return render(request, 'login_otp.html', {
 
+        'demo_otp': demo_otp
+    })
 
 # Logout
 
