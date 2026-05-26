@@ -125,32 +125,16 @@ def login_user(request):
 
             otp = random.randint(1000, 9999)
 
-            client = Client(
-
-                os.environ.get('TWILIO_ACCOUNT_SID'),
-
-                os.environ.get('TWILIO_AUTH_TOKEN')
-            )
-
-            client.messages.create(
-
-                body=f"Your Login OTP is {otp}",
-
-                from_=os.environ.get('TWILIO_PHONE_NUMBER'),
-
-                to=f"+91{phone}"
-            )
-
             request.session['login_phone'] = phone
 
             request.session['login_otp'] = str(otp)
 
-            return redirect('/login-otp/')
+            return render(request, 'login_otp.html', {
 
-    return render(request, 'login_otp.html', {
+                'demo_otp': otp
+            })
 
-    'demo_otp': otp
-    })
+    return render(request, 'login.html')
 
 
 # Verify Login OTP
