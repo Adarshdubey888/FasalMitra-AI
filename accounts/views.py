@@ -60,22 +60,6 @@ def register(request):
 
         otp = random.randint(1000, 9999)
 
-        client = Client(
-
-            os.environ.get('TWILIO_ACCOUNT_SID'),
-
-            os.environ.get('TWILIO_AUTH_TOKEN')
-        )
-
-        client.messages.create(
-
-            body=f"Your FasalMitra OTP is {otp}",
-
-            from_=os.environ.get('TWILIO_PHONE_NUMBER'),
-
-            to=f"+91{phone}"
-        )
-
         request.session['name'] = name
 
         request.session['phone'] = phone
@@ -86,7 +70,12 @@ def register(request):
 
         request.session['otp'] = str(otp)
 
-        return redirect('/verify-otp/')
+        request.session['demo_otp'] = otp
+
+        return render(request, 'verify_otp.html', {
+
+            'demo_otp': otp
+        })
 
     return render(request, 'register.html')
 
@@ -158,7 +147,10 @@ def login_user(request):
 
             return redirect('/login-otp/')
 
-    return render(request, 'login.html')
+    return render(request, 'login_otp.html', {
+
+    'demo_otp': otp
+    })
 
 
 # Verify Login OTP
