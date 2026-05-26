@@ -1,13 +1,13 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Farmer
 import random
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from twilio.rest import Client
+import os
 
-# Create your views here.
 
-
-
-# Register View
+# Admin Login
 
 def admin_login(request):
 
@@ -22,9 +22,7 @@ def admin_login(request):
         user = authenticate(
 
             request,
-
             username=username,
-
             password=password
         )
 
@@ -45,6 +43,9 @@ def admin_login(request):
         'error': error
     })
 
+
+# Register View
+
 def register(request):
 
     if request.method == "POST":
@@ -57,13 +58,23 @@ def register(request):
 
         state = request.POST.get('state')
 
-        # Generate OTP
-
         otp = random.randint(1000, 9999)
 
-        print("OTP:", otp)
+        client = Client(
 
-        # Save data temporarily in session
+            os.environ.get('TWILIO_ACCOUNT_SID'),
+
+            os.environ.get('TWILIO_AUTH_TOKEN')
+        )
+
+        client.messages.create(
+
+            body=f"Your FasalMitra OTP is {otp}",
+
+            from_=os.environ.get('TWILIO_PHONE_NUMBER'),
+
+            to=f"+91{phone}"
+        )
 
         request.session['name'] = name
 
@@ -111,10 +122,7 @@ def verify_otp(request):
     return render(request, 'verify_otp.html')
 
 
-# Login View
-
-
-# Login with Phone Number
+# Login
 
 def login_user(request):
 
@@ -122,15 +130,27 @@ def login_user(request):
 
         phone = request.POST.get('phone')
 
-        # Check farmer exists
-
         farmer = Farmer.objects.filter(phone=phone).first()
 
         if farmer:
 
             otp = random.randint(1000, 9999)
 
-            print("Login OTP:", otp)
+            client = Client(
+
+                os.environ.get('TWILIO_ACCOUNT_SID'),
+
+                os.environ.get('TWILIO_AUTH_TOKEN')
+            )
+
+            client.messages.create(
+
+                body=f"Your Login OTP is {otp}",
+
+                from_=os.environ.get('TWILIO_PHONE_NUMBER'),
+
+                to=f"+91{phone}"
+            )
 
             request.session['login_phone'] = phone
 
@@ -169,6 +189,7 @@ def logout_user(request):
     return redirect('home')
 
 
+# Profile
 
 def profile(request):
 
@@ -177,13 +198,14 @@ def profile(request):
     farmer = Farmer.objects.get(phone=phone)
 
     context = {
+
         'farmer': farmer
     }
 
     return render(request, 'profile.html', context)
 
 
-from django.contrib.auth.decorators import login_required
+# Admin Dashboard
 
 @login_required
 def admin_dashboard(request):
