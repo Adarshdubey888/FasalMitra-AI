@@ -4,7 +4,7 @@
 
 <div class="form-container">
 
-    <form method="POST">
+    <form method="POST" autocomplete="off">
 
         {% csrf_token %}
 
@@ -23,12 +23,12 @@
         <input type="text"
         name="username"
         placeholder="Enter Username"
-        required>
+        required  autocomplete="off">
 
         <input type="password"
         name="password"
         placeholder="Enter Password"
-        required>
+        required autocomplete="new-password" >
 
         <button type="submit">
 
