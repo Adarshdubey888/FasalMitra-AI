@@ -1,3 +1,5 @@
+
+
 *{
     margin:0;
     padding:0;
@@ -7,6 +9,7 @@
 body{
     font-family:Arial;
     background:white;
+    overflow-x:hidden;
 }
 
 /* Top Bar */
@@ -24,6 +27,7 @@ body{
 }
 
 /* Navbar */
+
 
 .custom-navbar{
     background:lightgreen;
@@ -58,15 +62,18 @@ body{
 /* Hero Layout */
 
 .hero-content{
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
 
-    gap:650px;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
 
     flex-wrap:wrap;
 
-    padding-left:60px;
+    padding:20px;
 }
 
 /* Logo */
@@ -442,7 +449,7 @@ form select{
 
     gap:50px;
 
-    align-items:flex-start;
+    align-items:center;
 
     flex-wrap:wrap;
 
@@ -452,16 +459,18 @@ form select{
 
     border-radius:15px;
 
-    box-shadow:0px 0px 10px rgba(0,0,0,20);
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
 }
 
 .founder-image img{
 
-    width:320px;
+    width:100%;
+
+    max-width:320px;
 
     border-radius:15px;
 
-    box-shadow:0px 0px 15px rgba(5,0,0,20);
+    box-shadow:0px 0px 15px rgba(0,0,0,0.2);
 }
 
 .founder-content{
@@ -616,3 +625,33 @@ form select{
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+@media screen and (max-width:768px){
+
+    .about-container{
+
+        padding:20px;
+
+        text-align:center;
+    }
+
+    .founder-content h1{
+
+        font-size:32px;
+    }
+
+    .founder-content h3{
+
+        font-size:22px;
+    }
+
+    .founder-content p{
+
+        font-size:16px;
+    }
+
+    .founder-image img{
+
+        max-width:260px;
+    }
+}
