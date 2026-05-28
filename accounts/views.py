@@ -155,7 +155,7 @@ def login_otp(request):
 
             request.session['farmer_phone'] = request.session.get('login_phone')
 
-            return redirect('/')
+            return redirect('home')
 
     return render(request, 'login_otp.html', {
 

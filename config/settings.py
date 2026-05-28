@@ -30,7 +30,7 @@ CSRF_TRUSTED_ORIGINS = [
 SECRET_KEY = 'django-insecure-bv)n24_50xxe9a$p1k3p=8i$zf4)n-82zd_htikj^k@5+asss_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,7 +85,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
 
     'default': dj_database_url.parse(
-
         os.environ.get('DATABASE_URL')
     )
 }
