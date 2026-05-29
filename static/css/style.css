@@ -32,12 +32,16 @@ body{
 .custom-navbar{
     background:lightgreen;
     padding:15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-brand{
     color:green !important;
     font-size:30px;
     font-weight:bold;
+    
 }
 
 .nav-link{
@@ -655,3 +659,78 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
         max-width:260px;
     }
 }
+
+/*tractor css*/
+.hero-image{
+    position:relative;
+    display:inline-block;
+}
+
+.tractor-hanger{
+
+    position:absolute;
+
+    top:100%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    transform-origin:top center;
+
+    animation:swing 3s ease-in-out infinite;
+
+    z-index:100;
+}
+
+.rope{
+
+    width:4px;
+
+    height:35px;
+
+    background:#8B5A2B;
+
+    margin:0;
+}
+
+.tractor{
+
+    width:70px;
+
+    display:block;
+
+    margin-top:-2px;   /* joins rope to tractor */
+     
+}
+
+@keyframes swing{
+
+    0%{
+        transform:translateX(-50%) rotate(-6deg);
+    }
+
+    50%{
+        transform:translateX(-50%) rotate(6deg);
+    }
+
+    100%{
+        transform:translateX(-50%) rotate(-6deg);
+    }
+}
+
+    .tractor{
+
+        width:40px;
+    }
+
+    .rope{
+
+        height:30px;
+    }
