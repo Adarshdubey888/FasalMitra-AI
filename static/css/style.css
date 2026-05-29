@@ -734,3 +734,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
         height:30px;
     }
+
+    @media screen and (max-width:768px){
+
+    .tractor-hanger{
+        display:none;
+    }
+}
